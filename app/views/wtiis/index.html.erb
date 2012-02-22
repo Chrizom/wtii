@@ -1,0 +1,16 @@
+<h1>What time is it?</h1>
+
+<%= form_tag("/spelltime", :method=>"post") do %>
+
+	<div class="inputs">
+	<%= label_tag(:hour, "Hour") %>
+	<%= text_field_tag(:hour) %>
+	
+	<%= label_tag(:minute, "Minute") %>
+	<%= text_field_tag(:minute) %>
+	</div>
+	
+	<div class="actions">
+	<%= submit_tag("Send") %>
+	</div>
+<% end %>
