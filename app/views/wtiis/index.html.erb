@@ -3,18 +3,21 @@ $(document).ready(function() {
    $("#time").mask("99:99");
 });
  </script>
+<div class="maindiv">
 
-<h1>What time is it?</h1>
+	<h1>What time is it?</h1>
 
-<%= form_tag("/spelltime", :method=>"post", :id=>"wtii_inputform") do %>
+	<%= form_tag("/spelltime", :method=>"post", :id=>"wtii_inputform") do %>
 
-	<div class="inputs">
-	<%= label_tag(:time, "Time: ") %>
-	<%= text_field_tag(:time, @actualtime) %>
-	</div>
-	
-	<div class="actions">	
-	<%= link_to_function "Spell it!", "$('#wtii_inputform').submit()" %>
-	</div>	
-	
-<% end %>
+		<div class="inputs">
+		<%= label_tag(:time, "Time: ") %>
+		<%= text_field_tag(:time, @actualtime) %>
+		</div>
+		
+		<div class="actions">	
+		<%= link_to_function "Spell it!", "$('#wtii_inputform').submit()", :class => "btn" %>
+		</div>	
+		
+	<% end %>
+
+</div> 

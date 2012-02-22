@@ -94,6 +94,11 @@ class WtiisController < ApplicationController
 			@m = self.getAsLiteral(min)
 		end
 		
+		if (hour == 0) or (min == 0)
+			@conjuction = ""
+			@m = ""
+		end
+		
 		return @m + @conjuction + @h + " o'clock ( " +self.getDay(hour)+" )"
 	
 	end

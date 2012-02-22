@@ -1,10 +1,13 @@
-<h1>It is...</h1>
+<div class="maindiv">
 
-<div class="info">
-<%= @spelledtime %>
+	<h1>It is...</h1>
+
+	<div class="info">
+	<%= @spelledtime %>
+	</div>
+
+	<div class="actions">	
+	<%= link_to "Try again!", {:controller => "wtiis", :action => "index"}, :class => "btn" %>
+	</div>
+
 </div>
-
-<div class="actions">	
-<%= link_to "Try again!", :controller => "wtiis", :action => "index" %>
-</div>
-

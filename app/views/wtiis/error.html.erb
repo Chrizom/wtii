@@ -1,9 +1,13 @@
-<h1>Error</h1>
+<div class="maindiv">
 
-<div class="info">
-Invalid time value given!
-</div>
+	<h1>Ooops!</h1>
 
-<div class="actions">	
-<%= link_to "Try again!", :controller => "wtiis", :action => "index" %>
+	<div class="info">
+	Invalid time value given!
+	</div>
+
+	<div class="actions">	
+	<%= link_to "Try again!", {:controller => "wtiis", :action => "index"}, :class => "btn" %>
+	</div>
+
 </div>
