@@ -1,7 +1,11 @@
 class WtiisController < ApplicationController
 	def index
-		
+		@actualtime = Time.now.strftime("%H:%M")
 	end
+	
+	def error
+	
+	end		
 	
 	def spelltime
 		@words = {0=>"midnight", 1=>"one", 2=>"two", 3=>"three",
@@ -12,16 +16,16 @@ class WtiisController < ApplicationController
 			  20=>"twenty",30=>"thirty", 40=>"fourty",
 			  50=>"fifty"}
 		
-		@hour = params[:hour]
-		@minute = params[:minute]		
+		@wholetimestr = params[:time]
+		@splittedtime = @wholetimestr.split(':')
 		
-#		@hourliteral = self.getAsLiteral(@hour.to_i) ee
-#		@minuteliteral = self.getAsLiteral(@decimal + self.getAsLiteral(@minute.to_i - @decimal)
-		
-		@spelledtime = self.spellIt(@hour.to_i, @minute.to_i)
-		
+		if (@splittedtime[0].to_i > 24) or (@splittedtime[1].to_i > 59)
+			render :error
+		else
+			@spelledtime = self.spellIt(@splittedtime[0].to_i, @splittedtime[1].to_i)
+		end
 	end
-	
+		
 	protected
 	
 	def conv24To12(hour)
