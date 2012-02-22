@@ -15,7 +15,7 @@ class WtiisController < ApplicationController
 		@hour = params[:hour]
 		@minute = params[:minute]		
 		
-#		@hourliteral = self.getAsLiteral(@hour.to_i)
+#		@hourliteral = self.getAsLiteral(@hour.to_i) ee
 #		@minuteliteral = self.getAsLiteral(@decimal + self.getAsLiteral(@minute.to_i - @decimal)
 		
 		@spelledtime = self.spellIt(@hour.to_i, @minute.to_i)
