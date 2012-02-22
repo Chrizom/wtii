@@ -16,13 +16,13 @@ class WtiisController < ApplicationController
 			  20=>"twenty",30=>"thirty", 40=>"fourty",
 			  50=>"fifty"}
 		
-		@wholetimestr = params[:time]
-		@splittedtime = @wholetimestr.split(':')
+		wholetimestr = params[:time]
+		splittedtime = wholetimestr.split(':')
 		
-		if (@splittedtime[0].to_i > 24) or (@splittedtime[1].to_i > 59)
+		if (splittedtime[0].to_i > 24) or (splittedtime[1].to_i > 59)
 			render :error
 		else
-			@spelledtime = self.spellIt(@splittedtime[0].to_i, @splittedtime[1].to_i)
+			@spelledtime = self.spellIt(splittedtime[0].to_i, splittedtime[1].to_i)
 		end
 	end
 		
@@ -31,24 +31,24 @@ class WtiisController < ApplicationController
 	def conv24To12(hour)
 		if hour > 12
 			case hour
-				when 13 : @h = 1
-				when 14 : @h = 2
-				when 15 : @h = 3
-				when 16 : @h = 4
-				when 17 : @h = 5
-				when 18 : @h = 6
-				when 19 : @h = 7
-				when 20 : @h = 8
-				when 21 : @h = 9
-				when 22 : @h = 10
-				when 23 : @h = 11
-				when 24 : @h = 12
+				when 13 : h = 1
+				when 14 : h = 2
+				when 15 : h = 3
+				when 16 : h = 4
+				when 17 : h = 5
+				when 18 : h = 6
+				when 19 : h = 7
+				when 20 : h = 8
+				when 21 : h = 9
+				when 22 : h = 10
+				when 23 : h = 11
+				when 24 : h = 12
 			end
 		else
-			@h = hour
+			h = hour
 		end
 
-		return @h
+		return h
 	end
 	
 	def getDay(hour)
@@ -70,36 +70,36 @@ class WtiisController < ApplicationController
 	end
 	
 	def spellIt(hour, min)
-		@conjuction = ""
-		@h = ""
-		@m = ""
+		conjuction = ""
+		hourstr = ""
+		minstr = ""
 		
 		if min < 31
-			@conjuction = " past "
-			@h = self.getAsLiteral(self.conv24To12(hour))
+			conjuction = " past "
+			hourstr = self.getAsLiteral(self.conv24To12(hour))
 		else
-			@conjuction = " to "
-			@h = self.getAsLiteral(self.conv24To12(hour+1))
+			conjuction = " to "
+			hourstr = self.getAsLiteral(self.conv24To12(hour+1))
 			min = 60 - min
 		end		
 					
 		if min > 19
 			if min == 30
-				@m = "half"
+				minstr = "half"
 			else		
-				@decimal = (min / 10 )*10
-				@m = self.getAsLiteral(@decimal) + "-" + self.getAsLiteral(min - @decimal)
+				decimal = (min / 10 )*10
+				minstr = self.getAsLiteral(decimal) + "-" + self.getAsLiteral(min - decimal)
 			end						
 		else
-			@m = self.getAsLiteral(min)
+			minstr = self.getAsLiteral(min)
 		end
 		
 		if (hour == 0) or (min == 0)
-			@conjuction = ""
-			@m = ""
+			conjuction = ""
+			minstr = ""
 		end
 		
-		return @m + @conjuction + @h + " o'clock ( " +self.getDay(hour)+" )"
+		return minstr + conjuction + hourstr + " o'clock ( " +self.getDay(hour)+" )"
 	
 	end
 	
