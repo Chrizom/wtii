@@ -13,6 +13,7 @@
 body{
  background: #1C0E12;
  color: #DECDC6;
+ font-family: Helvetica, Sans-Serif; 
 }
 
 h1{
@@ -28,10 +29,10 @@ input{
 
 a.btn {
 	display: block; 
-	width: 350px; 
-	height: 60px; 
-	padding: 40px 0 0 0; 
-	margin-top: 50px;
+	width: 250px; 
+	height: 50px; 
+	padding: 15px 0 0 0; 
+	margin-top: 40px;
 	margin-right: auto;	
 	margin-left: auto;
 
@@ -44,10 +45,12 @@ a.btn {
 	border: 5px solid #FFFAFA;
 	border-radius: 25px;
 
-	font: bold 55px/25px Helvetica, Sans-Serif; text-align: center;
-	text-decoration: none;
 	color: #DECDC6;
-	text-shadow: 0px 1px 2px #000000;
+	font-size: 35px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;	
+	text-shadow: 0px 1px 2px #000000;		
 }
 
 a.btn:hover {
